@@ -43,6 +43,8 @@ services:
       #- ./config/provisioning/default.sh:/opt/ai-dock/bin/provisioning.sh
       # In-container development
       - ./build/COPY_ROOT_1/opt/ai-dock/api-wrapper:/opt/ai-dock/api-wrapper
+    labels:
+        - traefik.http.services.supervisor.loadbalancer.server.port=8188
     ports:
         # SSH available on host machine port 2222 to avoid conflict. Change to suit
         - ${SSH_PORT_HOST:-2222}:22
